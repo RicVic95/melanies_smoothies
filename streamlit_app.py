@@ -10,8 +10,9 @@ st.write("Choose the fruits you want in your custom Smoothie")
 # Insert widget 
 cnx = st.connection('snowflake')
 session = cnx.session()
-my_dataframe = session.table('smoothies.public.fruit_options').select(col('FRUIT_NAME'))
-#st.dataframe(data=my_dataframe, use_container_width=True)
+my_dataframe = session.table('smoothies.public.fruit_options').select(col('SEARCH_ON'))
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop()
 
 # --------------------- # 
 # Name input            # 
@@ -33,6 +34,7 @@ if ingredients_list:
         # Add item to empty string + space
         ingredients_string += item + ' '
         # Get information from api        
+        st.subheader(f'Nutrition information for {item}')
         smoothiefroot_response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{item}')
         sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
  
