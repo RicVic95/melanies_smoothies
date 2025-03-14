@@ -38,7 +38,7 @@ if ingredients_list:
         ingredients_string += item + ' '
 
         # Search on locate in df
-        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == item, 'SEARCH_ON'].iloc[0]
+        search_on=pd_df.loc[pd_df['SEARCH_ON'] == item, 'SEARCH_ON'].iloc[0]
         
         # Get information from api        
         st.subheader(f'Nutrition information for {item}')
