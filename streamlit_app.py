@@ -32,9 +32,10 @@ if ingredients_list:
     for item in ingredients_list: 
         # Add item to empty string + space
         ingredients_string += item + ' '
-
-    # Print selection
-    # st.text(ingredients_string)
+        # Get information from api        
+        smoothiefroot_response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{item}')
+        sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
+ 
 
     # Generate write statement
     my_insert_stmt = """    
@@ -50,8 +51,3 @@ if ingredients_list:
     if time_to_insert: 
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered, {name_on_order}! ', icon='✅')
-
-# Display smoothiefroot nutrition information 
-smoothiefroot_response = requests.get('https://my.smoothiefroot.com/api/fruit/watermelon')
-# st.text(smoothiefroot_response.json())
-sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
