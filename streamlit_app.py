@@ -27,7 +27,7 @@ name_on_order = st.text_input('Name on Smoothie:')
 # Ingredients           # 
 # --------------------- # 
 
-ingredients_list = st.multiselect('Choose up to 5 ingredients', pd_df['SEARCH_ON'].to_list(), max_selections=5)
+ingredients_list = st.multiselect('Choose up to 5 ingredients', pd_df['FRUIT_NAME'].to_list(), max_selections=5)
 if ingredients_list: 
     # Create empty string to store values
     ingredients_string = ''
@@ -38,7 +38,7 @@ if ingredients_list:
         ingredients_string += item + ' '
 
         # Search on locate in df
-        search_on=pd_df.loc[pd_df['SEARCH_ON'] == item, 'SEARCH_ON'].iloc[0]
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == item, 'SEARCH_ON'].iloc[0]
         
         # Get information from api        
         st.subheader(f'Nutrition information for {item}')
