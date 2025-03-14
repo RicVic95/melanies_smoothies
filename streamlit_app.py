@@ -43,7 +43,7 @@ if ingredients_list:
         
         # Get information from api        
         st.subheader(f'Nutrition information for {item}')
-        smoothiefroot_response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{search_on}')
+        smoothiefroot_response = requests.get('https://my.smoothiefroot.com/api/fruit/' + search_on)
         sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
  
 
