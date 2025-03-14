@@ -38,7 +38,7 @@ if ingredients_list:
         ingredients_string += item + ' '
 
         # Search on locate in df
-        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == item, 'SEARCH_ON'].iloc[0]
         # st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         
         # Get information from api        
